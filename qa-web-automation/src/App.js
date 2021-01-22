@@ -1,24 +1,35 @@
 import logo from './logo.svg';
 import './App.css';
+import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
+import Employees from './components/employees'
+import AddEmployee from './components/add-employee'
+import EmployeeDetails from './components/employee-details';
 
 function App() {
+  function NoMatch({ location }) {
+    return (
+      <div>
+        <h3>
+          404!
+        </h3>
+        <p>Could not find page <code>{location.pathname}</code></p>
+      </div>
+    );
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    
+    <Router>
+        <Switch>
+          <div className="App">
+            <div className="container body-content">
+              <Route exact path="/" component={Employees} />
+              <Route path="/employees/add" component={AddEmployee}/>  
+              <Route path="/employees/details" component={EmployeeDetails}/>  
+            </div>      
+          </div>
+        </Switch>
+      </Router>
   );
 }
 
