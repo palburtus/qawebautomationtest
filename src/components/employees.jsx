@@ -12,22 +12,7 @@ class Employees extends React.Component{
         var employees = cookies.get('wbmdqa_employees');
         
         if(!employees){
-            employees = [
-                {
-                    "firstName" : "Greg",
-                    "lastName" : "Nettles",
-                    "jobTitle" : "Sr Mobile Developer",
-                    "currentProject" : "Medscape"
-                },
-                {
-                    "firstName" : "Carl",
-                    "lastName" : "Pavano",
-                    "jobTitle" : "Lead Mobile Developer",
-                    "currentProject" : "WebMD"
-                },
-            ];
-
-            cookies.set('wbmdqa_employees', employees, { path: '/' });
+            employees = resetCookies(employees, cookies);
         }
 
         this.state = {
@@ -41,6 +26,13 @@ class Employees extends React.Component{
             + "&lastName=" + employee.lastName
             + "&title=" + employee.jobTitle
             + "&project=" + employee.currentProject
+    }
+
+    resetForm(){
+        const cookies = new Cookies();
+        var employees = cookies.get('wbmdqa_employees');
+        resetCookies(employees, cookies);
+        window.location.href = '.';
     }
 
     deleteEmployee(employeeIndex){
@@ -115,11 +107,33 @@ class Employees extends React.Component{
                 <h1>Axis Chemicals Employee Directory</h1>
 
                 <a href="./employees/add" className="btn btn-success">Add Employee</a>
-
+                
                 {employees}
+
+                <button onClick={this.resetForm} className="btn btn-danger margin-top-15">Reset Form</button>
             </div>
         );
     }
 }
 
 export default Employees;
+
+function resetCookies(employees, cookies) {
+    employees = [
+        {
+            "firstName": "Greg",
+            "lastName": "Nettles",
+            "jobTitle": "Sr Mobile Developer",
+            "currentProject": "Medscape"
+        },
+        {
+            "firstName": "Carl",
+            "lastName": "Pavano",
+            "jobTitle": "Lead Mobile Developer",
+            "currentProject": "WebMD"
+        },
+    ];
+
+    cookies.set('wbmdqa_employees', employees, { path: '/' });
+    return employees;
+}
