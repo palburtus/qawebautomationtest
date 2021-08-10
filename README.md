@@ -1,6 +1,14 @@
-# Getting Started with Create React App
+# App Automation Sample Exercise 
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+In order to complete this exercise you will have to run this application locally.  Please follow the setup instructions and below.  Once you have it set up please complete the exercise.
+
+## Installing Dependencies 
+- In order to run this project locally you must have Nodejs installed.  If you don't please install it [https://nodejs.org/en/download/](by downloading it from here).
+- You need to have Git installed.  If you are running macOS it should already be installed.  If you don't have it or are running Windows [https://git-scm.com/downloads](Download Git here)
+
+## Setting Up Your Project
+- Create a Fork of this repository into your own Github account by clikcing the "Fork" button at the top right corner of this page
+- Clone the source code for your Fork of this repository
 
 ## Available Scripts
 
